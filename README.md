@@ -36,3 +36,7 @@ A simple app for consuming Google's Books API v1.
 ## Run Prod
 
 - **_Do not run in a production environment!_**
+
+## To be continued
+
+The API call needs to be debugged and the results rendered in the table.
