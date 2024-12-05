@@ -15,7 +15,7 @@ A simple app for consuming Google's Books API v1.
   - **_Note - I haven't tested the effects of these not being here, they might not all be necessary._**
 - Ensure you have a recent version of composer installed.
 - `cd` into root directory.
-- Create `.env` file and update params where necessary:
+- Create `.env` file and update params where necessary (e.g., API Key):
   ```bash
   cp .env.example .env
   ```

@@ -2,10 +2,40 @@
 
 namespace App;
 
+use Google\Client;
+use Google\Service\Books;
+
 class GoogleBooksAPI
 {
-    public function callApi()
+    private string $apiKey;
+    private Client $client;
+    private Books $service;
+
+    public function __construct()
     {
-        echo 'calling API';
+        $this->apiKey = $_ENV['GOOGLE_BOOKS_API_KEY'] ?? '';
+        $this->client = new Client();
+        $this->client->setDeveloperKey($this->apiKey);
+        $this->client->setApplicationName("SEARCHED_BOOKS");
+        $this->service = new Books($this->client);
+    }
+
+    public function callApi(string $search = '')
+    {
+        $query = urlencode($search);
+
+        $optParams = [
+            // 'filter' => 'free-ebooks',
+        ];
+        try {
+            $results = $this->service->volumes->listVolumes($query, $optParams);
+            return $results->getItems();
+        } catch (\Throwable $th) {
+            return '';
+        }
+
+        // foreach ($results->getItems() as $item) {
+        //     echo $item['volumeInfo']['title'], "<br /> \n";
+        // }
     }
 }

@@ -1,0 +1,46 @@
+html,
+body,
+.appContainer {
+  height: 100%;
+  margin: 0;
+}
+
+.appContainer {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.navBarContainer {
+  padding: 1rem 2rem;
+  flex: 0 1 auto;
+}
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+}
+
+main {
+  padding: 1rem 2rem;
+  flex: 1 1 auto;
+}
+
+.footerContainer {
+  padding: 1rem 2rem;
+  flex: 0 1 auto;
+}
+
+.googleBooksTable {
+  padding: 2rem;
+  background-color: #e0e0e0;
+}
+
+.googleBooksTable th,
+.googleBooksTable td {
+  padding: 0.25rem 0;
+}
+
+.googleBooksTable th {
+  border-bottom: 2px solid #a0a0a0;
+}

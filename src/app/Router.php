@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Controllers\GoogleApiController;
+
 class Router
 {
     private $routes = [];
@@ -42,8 +44,7 @@ class Router
         });
 
         $this->add('GET', '/search', function () {
-            $term = htmlspecialchars($_GET["term"] ?? '');
-            View::loadView('search', ['title' => 'Search Google Books', 'term' => $term]);
+            return (new GoogleApiController())->search();
         });
     }
 }
