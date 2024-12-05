@@ -31,9 +31,5 @@ class GoogleBooksAPI
         } catch (\Throwable $th) {
             throw $th;
         }
-
-        // foreach ($results->getItems() as $item) {
-        //     echo $item['volumeInfo']['title'], "<br /> \n";
-        // }
     }
 }
