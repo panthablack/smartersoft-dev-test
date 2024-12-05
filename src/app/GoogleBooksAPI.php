@@ -22,16 +22,14 @@ class GoogleBooksAPI
 
     public function callApi(string $search = '')
     {
-        $query = urlencode($search);
-
         $optParams = [
-            // 'filter' => 'free-ebooks',
+            'filter' => 'free-ebooks',
         ];
         try {
-            $results = $this->service->volumes->listVolumes($query, $optParams);
+            $results = $this->service->volumes->listVolumes($search, $optParams);
             return $results->getItems();
         } catch (\Throwable $th) {
-            return '';
+            throw $th;
         }
 
         // foreach ($results->getItems() as $item) {

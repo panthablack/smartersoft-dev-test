@@ -16,8 +16,8 @@ class GoogleApiController
 
     public function search()
     {
-        $data = $this->api->callApi();
         $term = htmlspecialchars($_GET["term"] ?? '');
+        $data = $this->api->callApi($term);
         View::loadView('search', [
             'title' => 'Search Google Books',
             'term' => $term,

@@ -22,21 +22,34 @@
             <span class="roboto-bold">Results for:</span>
             <?php echo $term; ?>
         </p>
-        <p><?php echo $data; ?></p>
         <table class="googleBooksTable">
             <thead>
-                <th>Title</th>
-                <th>Author(s)</th>
-                <th>Publisher</th>
-                <th>Published date</th>
-                <th>Thumbnail as a rendered image, not just the URL</th>
+                <tr>
+                    <th>Title</th>
+                    <th>Author(s)</th>
+                    <th>Publisher</th>
+                    <th>Published date</th>
+                    <th>Thumbnail as a rendered image, not just the URL</th>
+                </tr>
             </thead>
             <tbody>
-                <td>Title</td>
-                <td>Author(s)</td>
-                <td>Publisher</td>
-                <td>Published date</td>
-                <td>Thumbnail as a rendered image, not just the URL</td>
+                <?php
+                // var_dump($data[0]);
+                foreach ($data as $volume) {
+                    $title = $volume['volumeInfo']['title'];
+                    $authors = json_encode($volume['volumeInfo']['authors']);
+                    $publisher = $volume['volumeInfo']['publisher'];
+                    $publishedDate = $volume['volumeInfo']['publishedDate'];
+                    $imgSrc = $volume['volumeInfo']['imageLinks']['thumbnail'];
+                    echo '<tr>';
+                    echo "<td>$title</td>";
+                    echo "<td>$authors</td>";
+                    echo "<td>$publisher</td>";
+                    echo "<td>$publishedDate</td>";
+                    echo "<td><img class=\"thumbnail\" src=\"$imgSrc\"></td>";
+                    echo '</tr>';
+                }
+                ?>
             </tbody>
         </table>
     </div>
